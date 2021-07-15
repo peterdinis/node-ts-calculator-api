@@ -1,5 +1,12 @@
-export const getAllService = () => {
-    return "WORK";
+import {getConnection} from "typeorm";
+import {ProductRepository} from "../repository/ProductRepository"
+
+
+const productRepository = getConnection("products").getCustomRepository(ProductRepository);
+
+export const getAllService = async () => {
+    const products = await productRepository.find();
+    return products;
 }
 
 export const createService = () => {

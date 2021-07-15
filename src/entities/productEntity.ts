@@ -1,17 +1,14 @@
+import "reflect-metadata";
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 
-@Entity()
-export class Product {
+@Entity("products")
+export class ProductEntity {
 
     @PrimaryGeneratedColumn()
     id!: number;
 
     @Column()
     name!: string;
-
-    
-    // @Column("decimal", { precision: 8, scale: 2 })
-    // extraArg!: number;
 
     @Column()
     extraArg!: string;
