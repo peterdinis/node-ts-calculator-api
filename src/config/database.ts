@@ -1,6 +1,6 @@
 import { ConnectionOptions } from "typeorm";
 
-const config: ConnectionOptions = {
+const dbConfig: ConnectionOptions = {
   type: "postgres",
   host: process.env.POSTGRES_HOST || "localhost",
   port: Number(process.env.POSTGRES_PORT) || 5432,
@@ -11,4 +11,4 @@ const config: ConnectionOptions = {
   synchronize: true,
 };
 
-export default config;
+export default dbConfig;
