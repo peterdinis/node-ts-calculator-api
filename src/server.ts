@@ -4,6 +4,7 @@ import express, { Request, Response, Application } from "express";
 import morgan from "morgan";
 import helmet from "helmet";
 import dbConfig from "./config/database";
+import productRoutes from "./routes/productRoutes";
 
 const app: Application = express();
 
@@ -11,12 +12,15 @@ app.use(helmet());
 app.use(morgan("dev"));
 
 app.get("/", (req: Request, res: Response) => {
-  res.send("TEST");
-})
+  res.send("Test route");
+});
+
+app.use(productRoutes);
 
 // json parsing
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
+app.use(productRoutes);
 
 createConnection(dbConfig)
   .then((_connection) => {
