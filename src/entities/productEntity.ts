@@ -5,15 +5,15 @@ import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 export class ProductEntity {
 
     @PrimaryGeneratedColumn()
-    id!: number;
+    id: number;
 
     @Column()
-    name!: string;
+    name: string;
 
     @Column()
-    extraArg!: string;
+    extraArg: string;
 
     @Column()
-    price!: number;
+    price: number;
 
 }
