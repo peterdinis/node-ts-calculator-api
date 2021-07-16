@@ -7,8 +7,9 @@ const dbConfig: ConnectionOptions = {
   username: process.env.POSTGRES_USER || "postgres",
   password: process.env.POSTGRES_PASSWORD || "PETERdinis1234",
   database: process.env.POSTGRES_DB || "calculatordb",
-  entities: [],
+  entities: ["build/database/entities/**/*.js"],
   synchronize: true,
+  name: "products"
 };
 
 export default dbConfig;

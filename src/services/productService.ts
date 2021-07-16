@@ -1,6 +1,7 @@
 import {getConnection} from "typeorm";
 import { ProductEntity } from "../entities/productEntity";
-import {ProductRepository} from "../repository/ProductRepository"
+import {ProductRepository} from "../repository/ProductRepository";
+import dbConfig from "../config/database";
 
 const productRepository = getConnection("products").getCustomRepository(ProductRepository);
 
