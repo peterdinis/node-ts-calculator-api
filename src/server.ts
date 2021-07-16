@@ -5,6 +5,7 @@ import morgan from "morgan";
 import helmet from "helmet";
 import dbConfig from "./config/database";
 import productRoutes from "./routes/productRoutes";
+import swaggerUi from "swagger-ui-express";
 
 const app: Application = express();
 
@@ -16,6 +17,17 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 app.use(productRoutes);
+
+app.use(
+  "/docs",
+  swaggerUi.serve,
+  swaggerUi.setup(undefined, {
+    swaggerOptions: {
+      url: "/swagger.json",
+    },
+  })
+);
+
 
 // json parsing
 app.use(express.json());

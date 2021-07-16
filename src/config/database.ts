@@ -1,4 +1,5 @@
 import { ConnectionOptions } from "typeorm";
+import {Product} from "../models"
 
 const dbConfig: ConnectionOptions = {
   type: "postgres",
@@ -7,7 +8,7 @@ const dbConfig: ConnectionOptions = {
   username: process.env.POSTGRES_USER || "postgres",
   password: process.env.POSTGRES_PASSWORD || "PETERdinis1234",
   database: process.env.POSTGRES_DB || "calculatordb",
-  entities: ["build/database/entities/**/*.js"],
+  entities: [Product],
   synchronize: true,
   name: "products"
 };

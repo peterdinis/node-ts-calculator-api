@@ -1,8 +1,11 @@
-import "reflect-metadata";
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import {
+    Entity,
+    PrimaryGeneratedColumn,
+    Column,
+} from "typeorm";
 
-@Entity("products")
-export class ProductEntity {
+@Entity()
+export class Product {
 
     @PrimaryGeneratedColumn()
     id: number;
