@@ -1,28 +1,22 @@
-import "reflect-metadata";
-import {Request, Response} from "express";
-import {getAllService, createService, updateService, deleteService} from "../services/productService";
-import { ProductEntity } from "../entities/productEntity";
+import { Get, Route, Tags, Post, Body, Path } from "tsoa";
+import {Product} from "../models";
+import {
+    getAllProducts,
+    createProduct
+} from "../repository/ProductRepository";
+import {IProduct} from "../interfaces/IProduct";
 
-export const getAllProducts = async (req: Request, res: Response) => {
-    const products = await getAllService();
-    res.send(products).json();
-}
+@Route("products")
+@Tags("Product")
 
-export const createProduct = async (req: Request, res: Response) => {
-    const product = req["body"] as ProductEntity;
-    const newProduct = await createService(product);
-    res.send(newProduct);
+export default class ProductController {
+    @Get("/")
+    public async getProduct(): Promise<Array<Product>> {
+        return getAllProducts();
+    }
 
-}
-
-export const updateProduct = async (req: Request, res: Response) => {
-    const product: any = req["body"] as ProductEntity;
-    const id: any = req["params"]["id"];
-
-    res.send(updateService(product, id));
-}
-
-export const deleteProduct = async (req: Request, res: Response) => {
-    const id: any = req["params"]["id"];
-    res.send(deleteService(id));
+    @Post("/create")
+    public async createProduct(@Body() body: IProduct): Promise<Product> {
+        return createProduct(body);
+    }
 }
