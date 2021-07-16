@@ -1,4 +1,4 @@
-import { Get, Route, Tags, Post, Body, Path } from "tsoa";
+import { Get, Route, Tags, Post, Body} from "tsoa";
 import {Product} from "../models";
 import {
     getAllProducts,

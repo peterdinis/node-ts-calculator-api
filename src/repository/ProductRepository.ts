@@ -3,7 +3,7 @@ import {getRepository} from "typeorm"
 import {IProduct} from "../interfaces/IProduct";
 
 
-export const getAllProducts = async(): Promise<Array<IProduct>> => {
+export const getAllProducts = async(): Promise<Array<Product>> => {
     const productRepository = getRepository(Product);
     return productRepository.find();
 }
